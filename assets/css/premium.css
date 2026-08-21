@@ -74,6 +74,9 @@ section { padding: 96px 0; }
 .request-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .request-close { position: absolute; top: 12px; right: 14px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 1.7rem; line-height: 1; }
 .product-image-button { width: 100%; padding: 0; border: 0; cursor: zoom-in; }
+.product-image-gallery { display: flex; gap: 8px; padding: 8px; }
+.product-image-gallery .product-image-button { flex: 1; min-width: 0; }
+.product-image-gallery img { width: 100%; height: 100%; object-fit: cover; }
 .image-modal { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(10, 25, 18, .9); }
 .image-modal.open { display: flex; }
 .image-modal-box { width: min(900px, 100%); text-align: center; }

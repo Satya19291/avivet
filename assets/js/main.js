@@ -26,7 +26,7 @@
       .then(products=>{
         const renderProducts=filter=>{
           const visibleProducts=filter==='all'?products:products.filter(product=>product.audience===filter);
-          productGrid.innerHTML=visibleProducts.map(product=>`<article class="card product-card"><button class="product-art product-image-button" type="button" data-image="${product.image}" data-name="${product.name}"><img src="${product.image}" alt="View ${product.name} image"></button><div class="product-meta"><span>${product.audience}</span><span>${product.category}</span></div><h3>${product.name}</h3><p>${product.description}</p><button class="btn btn-outline request-details" type="button" data-product="${product.name}">Request Details</button></article>`).join('');
+          productGrid.innerHTML=visibleProducts.map(product=>{const images=product.images||[product.image]; return `<article class="card product-card"><div class="product-art product-image-gallery">${images.map((image,index)=>`<button class="product-image-button" type="button" data-image="${image}" data-name="${product.name}"><img src="${image}" alt="View ${product.name} image ${index+1}"></button>`).join('')}</div><div class="product-meta"><span>${product.audience}</span><span>${product.category}</span></div><h3>${product.name}</h3><p>${product.description}</p><button class="btn btn-outline request-details" type="button" data-product="${product.name}">Request Details</button></article>`;}).join('');
         };
         const requestedFilter=new URLSearchParams(location.search).get('category');
         const initialFilter=products.some(product=>product.audience===requestedFilter)?requestedFilter:'all';
