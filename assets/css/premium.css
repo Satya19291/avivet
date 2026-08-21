@@ -66,4 +66,19 @@ section { padding: 96px 0; }
 .mini-product img { width: 150px; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #fff; margin-bottom: 10px; }
 .mini-product span, .mini-product small { display: block; }
 .mini-product small { color: var(--leaf); font-size: .68rem; text-transform: uppercase; margin-top: 5px; }
+.request-modal { position: fixed; inset: 0; z-index: 80; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(16, 43, 33, .58); }
+.request-modal.open { display: flex; }
+.request-modal-box { position: relative; width: min(440px, 100%); padding: 34px; border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); }
+.request-modal-box h2 { margin: 12px 0 6px; color: var(--forest); font-weight: 500; }
+.request-product { margin: 0 0 24px; color: var(--muted); font: 700 .9rem Arial, sans-serif; }
+.request-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.request-close { position: absolute; top: 12px; right: 14px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 1.7rem; line-height: 1; }
+.product-image-button { width: 100%; padding: 0; border: 0; cursor: zoom-in; }
+.image-modal { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(10, 25, 18, .9); }
+.image-modal.open { display: flex; }
+.image-modal-box { width: min(900px, 100%); text-align: center; }
+.image-modal-preview { display: block; width: 100%; max-height: 78vh; object-fit: contain; border-radius: 6px; background: #fff; }
+.image-modal-title { margin: 14px 0 0; color: #fff; font: 700 1rem Arial, sans-serif; }
+.image-back { display: inline-flex; margin: 0 0 14px; padding: 10px 16px; border: 1px solid rgba(255,255,255,.7); border-radius: 4px; background: transparent; color: #fff; cursor: pointer; font: 700 .85rem Arial, sans-serif; }
+@media (max-width: 640px) { .request-actions .btn { width: 100%; } }
 @media (max-width: 640px) { .brand img { width: 62px; height: 62px; } .nav { min-height: 76px; } .hero-copy { padding-top: 66px; } .hero-card { height: 330px; } section { padding: 68px 0; } }
