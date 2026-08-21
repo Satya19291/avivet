@@ -1,0 +1,69 @@
+:root {
+  --ink: #17251f;
+  --muted: #65736d;
+  --forest: #123d2c;
+  --leaf: #2f704d;
+  --lime: #c4d85a;
+  --cream: #f5f3ec;
+  --paper: #fffdf8;
+  --line: #dce3d9;
+  --shadow: 0 22px 60px rgba(20, 48, 35, .12);
+  --radius: 10px;
+}
+
+body { font-family: Georgia, 'Times New Roman', serif; color: var(--ink); background: var(--paper); }
+body, p, a, button, input, textarea, select { letter-spacing: 0; }
+.topbar { background: var(--forest); font-family: Arial, sans-serif; }
+.site-header { background: rgba(255, 253, 248, .94); border-bottom: 1px solid var(--line); }
+.brand img { width: 78px; height: 78px; object-fit: cover; object-position: center; }
+.nav { min-height: 96px; }
+.brand-text strong, .brand-text span, .nav-links, .btn, .eyebrow, .pill, .hero-points, .breadcrumbs, .notice, .status, .product-meta { font-family: Arial, sans-serif; }
+.brand-text strong { color: var(--forest); }
+.brand-text span { color: var(--leaf); }
+.nav-links { font-size: .88rem; }
+.btn { border-radius: 4px; padding: 13px 19px; }
+.btn-primary { background: var(--forest); }
+.btn-primary:hover { background: var(--leaf); }
+.btn-outline { border-color: var(--forest); color: var(--forest); }
+.hero, .page-hero { background: var(--cream); }
+.hero-grid { min-height: 620px; }
+.hero-copy { padding: 105px 0 75px; }
+.eyebrow { background: transparent; padding: 0; color: var(--leaf); box-shadow: none; font-size: .72rem; }
+h1, .section-head h2, .page-hero h1 { color: var(--forest); font-weight: 500; }
+h1 { font-size: clamp(3.2rem, 6vw, 6.1rem); letter-spacing: -.03em; }
+.hero-copy h1 span { color: var(--leaf); }
+.hero-copy p { max-width: 540px; font-size: 1.12rem; }
+.hero-art { padding: 42px 0; }
+.hero-card { height: 500px; border-radius: var(--radius); border: 0; background: #b7d69f; box-shadow: var(--shadow); }
+.hero-card img { object-position: center; }
+.marquee { background: var(--paper); }
+.pill { background: transparent; border: 1px solid var(--line); color: var(--forest); border-radius: 3px; font-size: .75rem; text-transform: uppercase; }
+section { padding: 96px 0; }
+.section-head { max-width: 720px; margin-left: auto; margin-right: auto; }
+.section-head h2 { font-size: clamp(2.4rem, 4vw, 4rem); letter-spacing: -.03em; }
+.card { border-radius: var(--radius); border-color: var(--line); box-shadow: 0 8px 28px rgba(20, 48, 35, .05); }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.category-art, .product-art { border-radius: 5px; background: #e7eee3; overflow: hidden; }
+.category-art { height: 210px; }
+.category-art img, .product-art img { width: 100%; height: 100%; object-fit: cover; }
+.feature { border-radius: var(--radius); background: var(--forest); }
+.cta-strip { background: #e8eee4; }
+.cta-box { border-radius: var(--radius); }
+.footer { background: #102b21; }
+.page-hero { padding: 92px 0; }
+.page-hero h1 { font-size: clamp(3rem, 5vw, 5rem); }
+.product-card { padding: 14px; display: flex; flex-direction: column; }
+.product-card .product-art { height: 220px; margin-bottom: 7px; }
+.product-card .btn { margin-top: 18px; align-self: flex-start; }
+.product-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; color: var(--leaf); font-size: .7rem; text-transform: uppercase; font-weight: 800; }
+.status { display: inline-block; margin-top: 16px; color: var(--muted); font: .8rem Arial, sans-serif; }
+.product-filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 28px; }
+.product-filter { border: 1px solid var(--line); background: var(--paper); color: var(--forest); border-radius: 4px; padding: 11px 15px; cursor: pointer; font: 700 .8rem Arial, sans-serif; }
+.product-filter.active, .product-filter:hover { background: var(--forest); border-color: var(--forest); color: #fff; }
+.home-products { background: var(--cream); }
+.product-rail { display: flex; gap: 16px; overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x proximity; }
+.mini-product { flex: 0 0 150px; scroll-snap-align: start; color: var(--forest); font: 700 .82rem Arial, sans-serif; }
+.mini-product img { width: 150px; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #fff; margin-bottom: 10px; }
+.mini-product span, .mini-product small { display: block; }
+.mini-product small { color: var(--leaf); font-size: .68rem; text-transform: uppercase; margin-top: 5px; }
+@media (max-width: 640px) { .brand img { width: 62px; height: 62px; } .nav { min-height: 76px; } .hero-copy { padding-top: 66px; } .hero-card { height: 330px; } section { padding: 68px 0; } }

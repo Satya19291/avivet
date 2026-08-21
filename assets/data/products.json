@@ -1,0 +1,22 @@
+[
+  { "id": "acidvic", "name": "ACIDVIC", "audience": "Poultry", "category": "Medicine", "description": "Acidifier-based drinking water sanitizer.", "image": "products/POULTRY_CHICKEN_MEDICINES/ACIDVIC.jpeg" },
+  { "id": "av-liver-pro", "name": "AV-LIVER PRO", "audience": "Poultry", "category": "Medicine", "description": "Liver tonic.", "image": "products/POULTRY_CHICKEN_MEDICINES/AV-LIVER%20PRO.jpeg" },
+  { "id": "aviciprox", "name": "AVICIPROX", "audience": "Poultry", "category": "Medicine", "description": "Ciprofloxacin hydrochloride equivalent to Ciprofloxacin 10% w/w.", "image": "products/POULTRY_CHICKEN_MEDICINES/AVICIPROX.jpeg" },
+  { "id": "avichick-boost", "name": "AVICHICK BOOST", "audience": "Poultry", "category": "Medicine", "description": "Antioxidant and immunity booster.", "image": "products/POULTRY_CHICKEN_MEDICINES/AVICHICK_BOOST.jpeg" },
+  { "id": "avisel-ze-avisel-e", "name": "AVISEL-ZE & AVISEL-E", "audience": "Poultry", "category": "Medicine", "description": "Vitamins A, D3, E and C.", "image": "products/POULTRY_CHICKEN_MEDICINES/AVISEL-ZE%20and%20AVISEL-E.jpeg" },
+  { "id": "avitone-sp", "name": "AVITONE-SP", "audience": "Poultry", "category": "Medicine", "description": "Available in 1 litre and 5 litre packs.", "image": "products/POULTRY_CHICKEN_MEDICINES/AVITONE-SP_1L.jpeg" },
+  { "id": "av-cal-gold", "name": "AV-CAL GOLD", "audience": "Poultry", "category": "Medicine", "description": "Liquid supplement of calcium, phosphorus and vitamins.", "image": "products/POULTRY_CHICKEN_MEDICINES/AV_CAL GOLD.jpeg" },
+  { "id": "aziforte-bh", "name": "AZIFORTE-BH", "audience": "Poultry", "category": "Medicine", "description": "Azithromycin dihydrate with Bromhexine HCL.", "image": "products/POULTRY_CHICKEN_MEDICINES/AZIFORTE-BH.jpeg" },
+  { "id": "detoxifier-ls", "name": "DETOXIFIER-LS", "audience": "Poultry", "category": "Medicine", "description": "Liver and kidney detoxifier.", "image": "products/POULTRY_CHICKEN_MEDICINES/DETOXIFIER-LS.jpeg" },
+  { "id": "enrofloxavet-bh", "name": "ENROFLOXAVET-BH", "audience": "Poultry", "category": "Medicine", "description": "Enrofloxacin with Bromhexine Hydrochloride.", "image": "products/POULTRY_CHICKEN_MEDICINES/ENROFLOXAVET-BH.jpeg" },
+  { "id": "multi-grow", "name": "MULTI GROW", "audience": "Poultry", "category": "Medicine", "description": "Vitamins A, D3, E and C.", "image": "products/POULTRY_CHICKEN_MEDICINES/MULTI GROW.jpeg" },
+  { "id": "progut-boost", "name": "PROGUT-BOOST", "audience": "Poultry", "category": "Medicine", "description": "Gut health booster with probiotics, prebiotics, postbiotics and enzymes.", "image": "products/POULTRY_CHICKEN_MEDICINES/PROGUT-BOOST.jpeg" },
+  { "id": "vironic-plus", "name": "VIRONIC PLUS", "audience": "Poultry", "category": "Medicine", "description": "Disinfectant with Glutaraldehyde, BKC and DDAC.", "image": "products/POULTRY_CHICKEN_MEDICINES/vironic_plus.jpeg" },
+  { "id": "av-cal-gold-granules", "name": "AV-CAL GOLD GRANULES", "audience": "Poultry", "category": "Feed Supplement", "description": "Calcium granule feed supplement.", "image": "products/POULTRY_CHICKEN_FEED_SUPPLEMENTS/AV-CAL GOLD GRANULES.jpeg" },
+  { "id": "av-otc-20", "name": "AV-OTC-20%", "audience": "Poultry", "category": "Feed Supplement", "description": "Poultry feed supplement.", "image": "products/POULTRY_CHICKEN_FEED_SUPPLEMENTS/AV-OTC-20%25.jpeg" },
+  { "id": "chlorovet", "name": "CHLOROVET", "audience": "Poultry", "category": "Feed Supplement", "description": "Poultry feed supplement.", "image": "products/POULTRY_CHICKEN_FEED_SUPPLEMENTS/CHLOROVET.jpeg" },
+  { "id": "tv-mulin", "name": "TV-MULIN", "audience": "Poultry", "category": "Feed Supplement", "description": "Poultry feed supplement.", "image": "products/POULTRY_CHICKEN_FEED_SUPPLEMENTS/TV-MULIN.jpeg" },
+  { "id": "tylovet", "name": "TYLOVET", "audience": "Poultry", "category": "Feed Supplement", "description": "Poultry feed supplement.", "image": "products/POULTRY_CHICKEN_FEED_SUPPLEMENTS/TYLOVET.jpeg" },
+  { "id": "avimin-forte", "name": "AVIMIN FORTE", "audience": "Cattle", "category": "Medicine", "description": "Veterinary cattle product.", "image": "products/VETERNARY_COW_PRODUCTS/AVIMIN_Forte.jpeg" },
+  { "id": "av-cal-gold-cow", "name": "AV-CAL GOLD", "audience": "Cattle", "category": "Medicine", "description": "Veterinary cattle product.", "image": "products/VETERNARY_COW_PRODUCTS/AV_CAL_GOLD.jpeg" }
+]
