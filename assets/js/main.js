@@ -31,7 +31,7 @@
   const supportPhone='9553630770';
   const supportBanner=document.createElement('section');
   supportBanner.className='smartmove-banner';
-  supportBanner.innerHTML=`<div class="container smartmove-banner-inner"><div><span class="eyebrow">AVIVET Digital Technology Partner</span><h2>Smart Move Universal</h2><p>Working with AVIVET on websites, Android apps and digital solutions.</p></div><div class="smartmove-contact"><a href="mailto:${supportEmail}">${supportEmail}</a><a href="tel:${supportPhone}">${supportPhone}</a></div></div>`;
+  supportBanner.innerHTML=`<div class="container smartmove-banner-inner"><div><h2>Smart Move Universal</h2><p>Working with AVIVET on websites, Android apps and digital solutions.</p></div><div class="smartmove-contact"><a href="mailto:${supportEmail}">${supportEmail}</a><a href="tel:${supportPhone}">${supportPhone}</a></div></div>`;
   document.querySelector('.footer')?.before(supportBanner);
 
   document.querySelectorAll('.footer-bottom').forEach(footerBottom=>{
