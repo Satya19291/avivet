@@ -16,6 +16,17 @@ Long-term maintainable static website structure.
 - `assets/products/` - Optional local product images
 - `assets/data/products.json` - Editable poultry and cattle product catalogue
 
+## Website advertising
+The shared script contains an opt-in Google AdSense integration. To enable it:
+
+1. Create and verify an AdSense account for the published domain.
+2. Complete Google's site review and add the required privacy/cookie consent notice for your visitors.
+3. Create a responsive display ad unit in AdSense and copy the publisher client ID (`ca-pub-...`) and ad slot ID.
+4. Open `assets/js/main.js` and set `adsenseClient` and `adsenseSlot` near the top of the file. Do not use placeholder IDs or click your own ads.
+5. Publish the site on the verified domain and monitor the AdSense policy/status pages. Revenue depends on approval, traffic and advertiser demand; adding the code alone does not guarantee earnings.
+
+The site identifies **Smart Move Universal** as AVIVET's digital technology partner on every page. Contact details are `smartmoveapp9@gmail.com` and `9553630770`.
+
 ## Updating products later
 Add or remove product objects in `assets/data/products.json`. Each object supports `id`, `name`, `audience`, `category`, `description`, `image` and `status`. The product page renders this file automatically.
 

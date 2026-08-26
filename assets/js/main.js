@@ -4,6 +4,43 @@
   premiumStyles.href='assets/css/premium.css';
   document.head.appendChild(premiumStyles);
 
+  const adsenseClient='';
+  const adsenseSlot='';
+  const addAdUnit=placement=>{
+    const ad=document.createElement('div');
+    ad.className=`ad-slot ad-slot-${placement}`;
+    ad.setAttribute('aria-label','Advertisement');
+    ad.innerHTML=`<ins class="adsbygoogle" style="display:block" data-ad-client="${adsenseClient}" data-ad-slot="${adsenseSlot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+    return ad;
+  };
+  if(adsenseClient&&adsenseSlot){
+    const adsenseScript=document.createElement('script');
+    adsenseScript.async=true;
+    adsenseScript.src=`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
+    adsenseScript.crossOrigin='anonymous';
+    document.head.appendChild(adsenseScript);
+    const header=document.querySelector('.site-header');
+    const footer=document.querySelector('.footer');
+    if(header)header.after(addAdUnit('top'));
+    if(footer)footer.before(addAdUnit('bottom'));
+    window.adsbygoogle=window.adsbygoogle||[];
+    document.querySelectorAll('.adsbygoogle').forEach(()=>window.adsbygoogle.push({}));
+  }
+
+  const supportEmail='smartmoveapp9@gmail.com';
+  const supportPhone='9553630770';
+  const supportBanner=document.createElement('section');
+  supportBanner.className='smartmove-banner';
+  supportBanner.innerHTML=`<div class="container smartmove-banner-inner"><div><span class="eyebrow">AVIVET Digital Technology Partner</span><h2>Smart Move Universal</h2><p>Working with AVIVET on websites, Android apps and digital solutions.</p></div><div class="smartmove-contact"><a href="mailto:${supportEmail}">${supportEmail}</a><a href="tel:${supportPhone}">${supportPhone}</a></div></div>`;
+  document.querySelector('.footer')?.before(supportBanner);
+
+  document.querySelectorAll('.footer-bottom').forEach(footerBottom=>{
+    const credit=document.createElement('span');
+    credit.className='site-credit';
+    credit.innerHTML=`Digital technology partner: <strong>Smart Move Universal</strong> | <a href="mailto:${supportEmail}">${supportEmail}</a> | <a href="tel:${supportPhone}">${supportPhone}</a>`;
+    footerBottom.appendChild(credit);
+  });
+
   const poultryPhoto='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=85';
   const cattlePhoto='https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=85';
   document.querySelectorAll('img[src*="hero-animals"],img[src*="category-poultry"],img[src*="poultry-vitamins"]').forEach(image=>{
