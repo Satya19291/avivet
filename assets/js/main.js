@@ -27,8 +27,8 @@
     document.querySelectorAll('.adsbygoogle').forEach(()=>window.adsbygoogle.push({}));
   }
 
-  const supportEmail='smartmoveapp9@gmail.com';
-  const supportPhone='9553630770';
+  const supportEmail='';
+  const supportPhone='';
 
   document.querySelectorAll('.footer-bottom').forEach(footerBottom=>{
     const credit=document.createElement('span');
