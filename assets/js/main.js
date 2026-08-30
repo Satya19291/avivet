@@ -1,138 +1,189 @@
-(function(){
-  const premiumStyles=document.createElement('link');
-  premiumStyles.rel='stylesheet';
-  premiumStyles.href='assets/css/premium.css';
-  document.head.appendChild(premiumStyles);
+/**
+ * AVIVET ANIMAL HEALTH - MAIN CONTROLLER
+ * Core UI, Theme Toggle, Responsive Navigation & Global Modals
+ */
 
-  const adsenseClient='';
-  const adsenseSlot='';
-  const addAdUnit=placement=>{
-    const ad=document.createElement('div');
-    ad.className=`ad-slot ad-slot-${placement}`;
-    ad.setAttribute('aria-label','Advertisement');
-    ad.innerHTML=`<ins class="adsbygoogle" style="display:block" data-ad-client="${adsenseClient}" data-ad-slot="${adsenseSlot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
-    return ad;
+(function() {
+  'use strict';
+
+  // --- Theme Management (Default Dark Mode) ---
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem('avivet_theme') || 'dark';
+    
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcons(savedTheme);
+
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('avivet_theme', nextTheme);
+        updateThemeIcons(nextTheme);
+      });
+    });
   };
-  if(adsenseClient&&adsenseSlot){
-    const adsenseScript=document.createElement('script');
-    adsenseScript.async=true;
-    adsenseScript.src=`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
-    adsenseScript.crossOrigin='anonymous';
-    document.head.appendChild(adsenseScript);
-    const header=document.querySelector('.site-header');
-    const footer=document.querySelector('.footer');
-    if(header)header.after(addAdUnit('top'));
-    if(footer)footer.before(addAdUnit('bottom'));
-    window.adsbygoogle=window.adsbygoogle||[];
-    document.querySelectorAll('.adsbygoogle').forEach(()=>window.adsbygoogle.push({}));
-  }
 
-  const supportEmail='';
-  const supportPhone='';
+  const updateThemeIcons = (theme) => {
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      const sun = btn.querySelector('.icon-sun');
+      const moon = btn.querySelector('.icon-moon');
+      if (sun && moon) {
+        if (theme === 'dark') {
+          sun.style.display = 'block';
+          moon.style.display = 'none';
+        } else {
+          sun.style.display = 'none';
+          moon.style.display = 'block';
+        }
+      }
+    });
+  };
 
-  document.querySelectorAll('.footer-bottom').forEach(footerBottom=>{
-    const credit=document.createElement('span');
-    credit.className='site-credit';
-    credit.innerHTML=`Digital technology partner: <strong>Smart Move Universal</strong> | <a href="mailto:${supportEmail}">${supportEmail}</a> | <a href="tel:${supportPhone}">${supportPhone}</a>`;
-    footerBottom.appendChild(credit);
-  });
+  // --- Mobile Navigation Drawer ---
+  const initNavigation = () => {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
 
-  const poultryPhoto='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=85';
-  const cattlePhoto='https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=85';
-  document.querySelectorAll('img[src*="hero-animals"],img[src*="category-poultry"],img[src*="poultry-vitamins"]').forEach(image=>{
-    image.src=poultryPhoto;
-    image.alt='Chickens on a farm';
-  });
-  document.querySelectorAll('img[src*="category-cattle"],img[src*="livestock-tonic"]').forEach(image=>{
-    image.src=cattlePhoto;
-    image.alt='Cattle in a field';
-  });
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+        menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+      });
 
-  const productGrid=document.querySelector('.product-card')?.parentElement;
-  if(productGrid){
-    const filterBar=document.createElement('div');
-    filterBar.className='product-filters';
-    filterBar.innerHTML='<button class="product-filter active" data-filter="all">All Products</button><button class="product-filter" data-filter="Poultry">Poultry Products</button><button class="product-filter" data-filter="Cattle">Veterinary Products</button>';
-    productGrid.parentElement.insertBefore(filterBar,productGrid);
-    fetch('assets/data/products.json')
-      .then(response=>response.json())
-      .then(products=>{
-        const renderProducts=filter=>{
-          const visibleProducts=filter==='all'?products:products.filter(product=>product.audience===filter);
-          productGrid.innerHTML=visibleProducts.map(product=>{const images=product.images||[product.image]; return `<article class="card product-card"><div class="product-art product-image-gallery">${images.map((image,index)=>`<button class="product-image-button" type="button" data-image="${image}" data-name="${product.name}"><img src="${image}" alt="View ${product.name} image ${index+1}"></button>`).join('')}</div><div class="product-meta"><span>${product.audience}</span><span>${product.category}</span></div><h3>${product.name}</h3><p>${product.description}</p><button class="btn btn-outline request-details" type="button" data-product="${product.name}">Request Details</button></article>`;}).join('');
-        };
-        const requestedFilter=new URLSearchParams(location.search).get('category');
-        const initialFilter=products.some(product=>product.audience===requestedFilter)?requestedFilter:'all';
-        renderProducts(initialFilter);
-        filterBar.querySelectorAll('.product-filter').forEach(button=>{
-          if(button.dataset.filter===initialFilter){
-            filterBar.querySelector('.active').classList.remove('active');
-            button.classList.add('active');
-          }
-          button.addEventListener('click',()=>{
-            filterBar.querySelectorAll('.product-filter').forEach(item=>item.classList.remove('active'));
-            button.classList.add('active');
-            renderProducts(button.dataset.filter);
-          });
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+          navLinks.classList.remove('open');
+          menuBtn.textContent = '☰';
+        }
+      });
+
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuBtn.textContent = '☰';
         });
-      })
-      .catch(()=>{});
-  }
+      });
+    }
 
-  const requestModal=document.createElement('div');
-  requestModal.className='request-modal';
-  requestModal.innerHTML='<div class="request-modal-box" role="dialog" aria-modal="true" aria-labelledby="request-title"><button class="request-close" type="button" aria-label="Close request options">&times;</button><span class="eyebrow">Product enquiry</span><h2 id="request-title">Request product details</h2><p class="request-product"></p><div class="request-actions"><a class="btn btn-primary request-email" href="#">Request by Gmail</a><a class="btn btn-outline request-whatsapp" href="#" target="_blank" rel="noopener">Request by WhatsApp</a></div></div>';
-  document.body.appendChild(requestModal);
-  const closeRequestModal=()=>requestModal.classList.remove('open');
-  requestModal.querySelector('.request-close').addEventListener('click',closeRequestModal);
-  requestModal.addEventListener('click',event=>{if(event.target===requestModal)closeRequestModal();});
-  document.addEventListener('click',event=>{
-    const requestButton=event.target.closest('.request-details');
-    if(!requestButton)return;
-    const product=requestButton.dataset.product;
-    const subject=encodeURIComponent(`Product enquiry: ${product}`);
-    const message=encodeURIComponent(`Hello AVIVET, I would like details about ${product}.`);
-    requestModal.querySelector('.request-product').textContent=product;
-    requestModal.querySelector('.request-email').href=`mailto:avivetanimanlhealth@gmail.com?subject=${subject}&body=${message}`;
-    requestModal.querySelector('.request-whatsapp').href=`https://wa.me/918367455559?text=${message}`;
-    requestModal.classList.add('open');
+    // Active Link Highlighting
+    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+
+  // --- Back to Top Button ---
+  const initBackToTop = () => {
+    const backBtn = document.querySelector('.back-top');
+    if (!backBtn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    });
+
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  };
+
+  // --- Contact & Enquiry Form Handlers ---
+  const initForms = () => {
+    document.querySelectorAll('form[data-mailto]').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const lines = [];
+        for (const [key, value] of formData.entries()) {
+          if (value.trim()) {
+            lines.push(`${key}: ${value}`);
+          }
+        }
+        const subject = encodeURIComponent(form.dataset.subject || 'AVIVET Website Enquiry');
+        const body = encodeURIComponent(lines.join('\n\n'));
+        const mailtoUrl = `mailto:${form.dataset.mailto}?subject=${subject}&body=${body}`;
+        
+        // Show success notification & redirect to email
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const origText = submitBtn.textContent;
+        submitBtn.textContent = 'Opening Email Client...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          window.location.href = mailtoUrl;
+          submitBtn.textContent = origText;
+          submitBtn.disabled = false;
+        }, 600);
+      });
+    });
+  };
+
+  // --- Request Details Modal Handler ---
+  const initRequestModal = () => {
+    let modal = document.querySelector('.request-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'request-modal';
+      modal.innerHTML = `
+        <div class="request-modal-box" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle">
+          <button class="request-close" type="button" aria-label="Close modal">&times;</button>
+          <span class="eyebrow">Product Enquiry</span>
+          <h2 id="requestModalTitle">Request Product Details</h2>
+          <p class="request-product"></p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px;">
+            Connect directly with an AVIVET veterinary specialist or distributor coordinator:
+          </p>
+          <div class="request-actions">
+            <a class="btn btn-primary request-whatsapp" href="#" target="_blank" rel="noopener">
+              💬 Instant WhatsApp
+            </a>
+            <a class="btn btn-outline request-email" href="#">
+              ✉ Email Enquiry
+            </a>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    const closeModal = () => modal.classList.remove('open');
+    modal.querySelector('.request-close')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.request-details');
+      if (!btn) return;
+      
+      const productName = btn.dataset.product || 'AVIVET Product';
+      const cleanName = encodeURIComponent(productName);
+      const subject = encodeURIComponent(`Product Inquiry: ${productName}`);
+      const body = encodeURIComponent(`Hello AVIVET Team,\n\nI am interested in receiving technical literature, bulk pricing, and availability details for "${productName}".\n\nPlease share the catalogue.\n\nThank you.`);
+
+      modal.querySelector('.request-product').textContent = productName;
+      modal.querySelector('.request-email').href = `mailto:avivetanimanlhealth@gmail.com?subject=${subject}&body=${body}`;
+      modal.querySelector('.request-whatsapp').href = `https://wa.me/918367455559?text=${body}`;
+      modal.classList.add('open');
+    });
+  };
+
+  // Initialize on DOM Ready
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initNavigation();
+    initBackToTop();
+    initForms();
+    initRequestModal();
   });
-
-  const imageModal=document.createElement('div');
-  imageModal.className='image-modal';
-  imageModal.innerHTML='<div class="image-modal-box" role="dialog" aria-modal="true"><button class="image-back" type="button">← Back</button><img class="image-modal-preview" alt=""><h2 class="image-modal-title"></h2></div>';
-  document.body.appendChild(imageModal);
-  const closeImageModal=()=>imageModal.classList.remove('open');
-  imageModal.querySelector('.image-back').addEventListener('click',closeImageModal);
-  imageModal.addEventListener('click',event=>{if(event.target===imageModal)closeImageModal();});
-  document.addEventListener('click',event=>{
-    const imageButton=event.target.closest('.product-image-button');
-    if(!imageButton)return;
-    const preview=imageModal.querySelector('.image-modal-preview');
-    preview.src=imageButton.dataset.image;
-    preview.alt=imageButton.dataset.name;
-    imageModal.querySelector('.image-modal-title').textContent=imageButton.dataset.name;
-    imageModal.classList.add('open');
-  });
-
-  if(location.pathname.endsWith('index.html')||location.pathname.endsWith('/')){
-    fetch('assets/data/products.json')
-      .then(response=>response.json())
-      .then(products=>{
-        const section=document.createElement('section');
-        section.className='home-products';
-        section.innerHTML=`<div class="container"><div class="section-head"><span class="eyebrow">From the catalogue</span><h2>Explore our products</h2></div><div class="product-rail">${products.map(product=>`<a class="mini-product" href="products.html?category=${product.audience}"><img src="${product.image}" alt="${product.name}"><span>${product.name}</span><small>${product.audience}</small></a>`).join('')}</div></div>`;
-        document.querySelector('.cta-strip')?.before(section);
-      })
-      .catch(()=>{});
-  }
-
-  const nav=document.querySelector('.site-header .nav');
-  const menu=document.querySelector('.menu-btn');
-  if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));}
-  const back=document.querySelector('.back-top');
-  if(back){window.addEventListener('scroll',()=>back.classList.toggle('show',window.scrollY>500));back.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));}
-  document.querySelectorAll('[data-current]').forEach(a=>{if(a.getAttribute('href')===location.pathname.split('/').pop()|| (a.getAttribute('href')==='index.html'&&(!location.pathname.split('/').pop()||location.pathname.endsWith('/')))) a.classList.add('active');});
-  const forms=document.querySelectorAll('form[data-mailto]');
-  forms.forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const lines=[];for(const [k,v] of data.entries())lines.push(`${k}: ${v}`);const subject=encodeURIComponent(form.dataset.subject||'AVIVET Website Enquiry');const body=encodeURIComponent(lines.join('\n'));window.location.href=`mailto:${form.dataset.mailto}?subject=${subject}&body=${body}`;}));
 })();

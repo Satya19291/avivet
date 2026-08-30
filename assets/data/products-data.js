@@ -1,4 +1,8 @@
-[
+/**
+ * AVIVET ANIMAL HEALTH - MASTER EMBEDDED PRODUCTS DATASET
+ * Works offline, with file:/// URLs, and on web servers without CORS restrictions.
+ */
+window.AVIVET_PRODUCTS_DATA = [
   {
     "id": "acidvic",
     "name": "ACIDVIC",
@@ -283,4 +287,4 @@
     "pack": "1 Litre, 5 Litre & 10 Litre Heavy-Duty Jerry Cans",
     "image": "products/VETERNARY_COW_PRODUCTS/AV_CAL_GOLD.jpeg"
   }
-]
+];

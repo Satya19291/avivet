@@ -13,6 +13,8 @@ const urlsToCache = [
   '/assets/css/advanced.css',
   '/assets/js/main.js',
   '/assets/js/advanced.js',
+  '/assets/data/products-data.js',
+  '/assets/data/products.json',
   '/assets/images/avivet-logo.png',
   '/assets/images/favicon.png',
   '/assets/images/hero-animals.svg',
