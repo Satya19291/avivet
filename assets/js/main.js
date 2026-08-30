@@ -61,8 +61,11 @@
 
       navLinks.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-          menuBtn.textContent = '☰';
+          const href = a.getAttribute('href') || '';
+          if (href.startsWith('#')) {
+            navLinks.classList.remove('open');
+            menuBtn.textContent = '☰';
+          }
         });
       });
     }

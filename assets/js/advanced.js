@@ -973,20 +973,7 @@
 
   // --- Scroll Reveal & 3D Tilt Observer ---
   const initMicroInteractions = () => {
-    const elementsToReveal = document.querySelectorAll('section, .card, .feature-banner, .cta-box');
-    elementsToReveal.forEach(el => el.classList.add('reveal-init'));
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    elementsToReveal.forEach(el => observer.observe(el));
-
+    // Reveal animations disabled for zero opacity glitches on mobile
     document.querySelectorAll('.card, .hero-visual-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -1045,57 +1032,52 @@
     });
   };
 
-  // --- Product Catalogue Page Filter & Grid Renderer ---
+  // --- Product Catalogue Page Filter (DOM-safe & non-destructive) ---
   const initCataloguePage = () => {
     const grid = document.querySelector('#catalogueProductGrid');
     if (!grid) return;
 
+    const cards = grid.querySelectorAll('.product-card');
     const filterContainer = document.querySelector('#catalogueFilters');
     const urlParams = new URLSearchParams(window.location.search);
     let currentFilter = urlParams.get('category') || 'all';
 
-    const renderGrid = (filter) => {
-      let filtered = allProducts;
-      if (filter !== 'all') {
-        filtered = allProducts.filter(p => 
-          p.audience.toLowerCase() === filter.toLowerCase() || 
-          p.category.toLowerCase() === filter.toLowerCase() ||
-          (filter.toLowerCase() === 'feed supplement' && p.category.toLowerCase().includes('feed'))
-        );
-      }
+    const applyFilter = (filter) => {
+      const f = (filter || 'all').toLowerCase();
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const aud = (card.dataset.audience || '').toLowerCase();
+        const cat = (card.dataset.category || '').toLowerCase();
+        
+        let match = false;
+        if (f === 'all') {
+          match = true;
+        } else if (aud === f || cat === f) {
+          match = true;
+        } else if (f.includes('feed') && cat.includes('feed')) {
+          match = true;
+        }
 
-      grid.innerHTML = filtered.map(p => `
-        <div class="card product-card" data-audience="${p.audience}" data-category="${p.category}">
-          <div class="product-art-wrap" onclick="openProductSpecModal('${p.id}')">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
-          </div>
-          <div class="product-meta-row">
-            <span class="badge ${p.audience === 'Poultry' ? 'badge-emerald' : 'badge-gold'}">${p.audience}</span>
-            <span class="badge badge-cyan">${p.category}</span>
-          </div>
-          <h3>${p.name}</h3>
-          <p class="prod-desc">${p.tagline || p.description}</p>
-          <div class="prod-composition">
-            <strong>Active Composition</strong>
-            ${p.composition ? p.composition.substring(0, 75) + '...' : 'Scientifically formulated veterinary active'}
-          </div>
-          <div class="product-action-row">
-            <button class="btn btn-primary btn-sm" onclick="openProductSpecModal('${p.id}')">
-              🔍 View Specs
-            </button>
-            <button class="btn btn-outline btn-sm request-details" data-product="${p.name}">
-              💬 Enquire
-            </button>
-          </div>
-        </div>
-      `).join('');
+        if (match) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Fallback: if nothing matches (e.g. invalid query param), show all cards so page is never blank
+      if (visibleCount === 0) {
+        cards.forEach(card => { card.style.display = ''; });
+      }
     };
 
-    renderGrid(currentFilter);
+    applyFilter(currentFilter);
 
     if (filterContainer) {
       filterContainer.querySelectorAll('.product-filter-btn').forEach(btn => {
-        if (btn.dataset.filter.toLowerCase() === currentFilter.toLowerCase()) {
+        const filterVal = (btn.dataset.filter || '').toLowerCase();
+        if (filterVal === currentFilter.toLowerCase()) {
           filterContainer.querySelector('.active')?.classList.remove('active');
           btn.classList.add('active');
         }
@@ -1103,8 +1085,7 @@
         btn.addEventListener('click', () => {
           filterContainer.querySelectorAll('.product-filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          currentFilter = btn.dataset.filter;
-          renderGrid(currentFilter);
+          applyFilter(btn.dataset.filter);
         });
       });
     }

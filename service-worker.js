@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avivet-v1';
+const CACHE_NAME = 'avivet-v3';
 const urlsToCache = [
   '/',
   '/index.html',

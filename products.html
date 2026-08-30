@@ -8,9 +8,102 @@
   <link rel="icon" href="assets/images/favicon.png">
   <meta name="theme-color" content="#06120e">
   
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/advanced.css">
-  <link rel="stylesheet" href="assets/css/premium.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.0">
+  <link rel="stylesheet" href="assets/css/advanced.css?v=3.0">
+  <link rel="stylesheet" href="assets/css/premium.css?v=3.0">
+  <style>
+    /* ===== COMPACT HERO FOR INSTANT PRODUCT VISIBILITY ===== */
+    .page-hero {
+      padding: 32px 0 20px;
+    }
+    @media (max-width: 860px) {
+      .page-hero { padding: 18px 0 14px; }
+      .page-hero h1 { font-size: 1.55rem; margin-bottom: 6px; }
+      .page-hero p.lead { font-size: 0.88rem; margin-bottom: 0; line-height: 1.45; }
+      .page-hero .breadcrumbs { margin-bottom: 8px; font-size: 0.78rem; }
+      .catalogue-section { padding: 16px 0 40px !important; }
+    }
+
+    /* ===== PRODUCT CARD — GUARANTEED VISIBILITY ON ALL DEVICES ===== */
+    .card.product-card {
+      background: #ffffff;
+      border: 1px solid #c7e8d8;
+      border-radius: 18px;
+      box-shadow: 0 3px 14px rgba(3,43,32,0.09);
+      display: flex !important;
+      flex-direction: column;
+      padding: 20px;
+      overflow: hidden;
+      min-height: 380px;
+    }
+    [data-theme="dark"] .card.product-card {
+      background: #153427 !important;
+      border: 1px solid #285d46 !important;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.55) !important;
+    }
+    .product-art-wrap {
+      height: 200px;
+      border-radius: 12px;
+      background: #f0fdf4;
+      border: 1px solid #d1fae5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    [data-theme="dark"] .product-art-wrap {
+      background: #1c4434 !important;
+      border-color: #285d46 !important;
+    }
+    .product-art-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .product-card h3 { color: #0f172a; font-size: 1.18rem; margin-bottom: 8px; }
+    [data-theme="dark"] .product-card h3 { color: #f0fdf4 !important; }
+    .product-card p.prod-desc { color: #475569; font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px; }
+    [data-theme="dark"] .product-card p.prod-desc { color: #a7c4b5 !important; }
+    .product-card .prod-composition {
+      background: #f0fdf4;
+      border: 1px solid #d1fae5;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #334155;
+      font-size: 0.78rem;
+      margin-bottom: 16px;
+    }
+    [data-theme="dark"] .product-card .prod-composition {
+      background: #193e2f !important;
+      border-color: #285d46 !important;
+      color: #a7c4b5 !important;
+    }
+    [data-theme="dark"] .product-card .prod-composition strong { color: #4ade80 !important; }
+    [data-theme="dark"] .badge { border-width: 1px; border-style: solid; }
+    [data-theme="dark"] .badge-emerald { background:rgba(16,185,129,0.18)!important;color:#4ade80!important;border-color:rgba(16,185,129,0.35)!important; }
+    [data-theme="dark"] .badge-cyan { background:rgba(6,182,212,0.18)!important;color:#67e8f9!important;border-color:rgba(6,182,212,0.35)!important; }
+    [data-theme="dark"] .badge-gold { background:rgba(245,158,11,0.18)!important;color:#fcd34d!important;border-color:rgba(245,158,11,0.35)!important; }
+
+    /* ===== RESPONSIVE PRODUCT GRID ===== */
+    #catalogueProductGrid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+    }
+    @media (max-width: 1024px) {
+      #catalogueProductGrid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px !important; }
+    }
+    @media (max-width: 860px) {
+      #catalogueProductGrid { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .product-art-wrap { height: 190px; }
+      .card.product-card { padding: 16px; min-height: 0; }
+      .product-action-row { flex-direction: column; gap: 8px; }
+      .product-action-row .btn { width: 100% !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -602,8 +695,8 @@
   </footer>
 
   <button class="back-top" aria-label="Back to top">↑</button>
-  <script src="assets/data/products-data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/advanced.js"></script>
+  <script src="assets/data/products-data.js?v=3.0"></script>
+  <script src="assets/js/main.js?v=3.0"></script>
+  <script src="assets/js/advanced.js?v=3.0"></script>
 </body>
 </html>
