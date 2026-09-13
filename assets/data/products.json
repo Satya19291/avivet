@@ -1,4 +1,19 @@
-[
+[ 
+  {
+    "id": "levotyl-bh",
+    "name": "LEVOTYL-BH",
+    "audience": "Poultry",
+    "category": "Medicine",
+    "tagline": "Triple-Action Poultry Respiratory Formula",
+    "description": "A concentrated poultry formulation combining Levofloxacin, Tylosin, and Bromhexine for respiratory flock care.",
+    "composition": "Each ml contains: Levofloxacin Hemihydrate I.P. equivalent to Levofloxacin 100 mg, Tylosin Tartrate I.P. 10 mg, Bromhexine Hydrochloride I.P. 15 mg, Excipients q.s.",
+    "indications": ["Poultry Respiratory Care", "Flock Health Support", "Mucus Management"],
+    "benefits": "Combines antibacterial coverage with Bromhexine in one convenient liquid formulation for poultry operations.",
+    "dosage": "Use only as directed on the product label or by a qualified veterinarian.",
+    "pack": "Refer to the product label for available pack sizes.",
+    "image": "products/POULTRY_CHICKEN_MEDICINES/LEVOTYL-BH.jpeg",
+    "featured": true
+  },
   {
     "id": "acidvic",
     "name": "ACIDVIC",

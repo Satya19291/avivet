@@ -87,6 +87,43 @@
     [data-theme="dark"] .badge-cyan { background:rgba(6,182,212,0.18)!important;color:#67e8f9!important;border-color:rgba(6,182,212,0.35)!important; }
     [data-theme="dark"] .badge-gold { background:rgba(245,158,11,0.18)!important;color:#fcd34d!important;border-color:rgba(245,158,11,0.35)!important; }
 
+    /* ===== FEATURED NEW POULTRY PRODUCT ===== */
+    .featured-product {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #fffdf5 0%, #ffffff 58%, #ecfdf5 100%) !important;
+      border: 2px solid #f59e0b !important;
+      box-shadow: 0 12px 32px rgba(217,119,6,0.18), 0 4px 16px rgba(3,43,32,0.1) !important;
+      position: relative;
+    }
+    .featured-product::before {
+      content: 'NEW · FEATURED FOR POULTRY FARMS';
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1;
+      background: #f59e0b;
+      color: #291500;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font: 800 0.68rem/1 'Outfit', sans-serif;
+      letter-spacing: 0.04em;
+    }
+    .featured-product .product-art-wrap { border-color: #fcd34d; background: #fffbeb; }
+    .featured-product h3 { color: #9a3412; font-size: 1.55rem; }
+    .featured-product .product-action-row .btn-primary { background: #d97706; border-color: #d97706; }
+    [data-theme="dark"] .featured-product {
+      background: linear-gradient(135deg, #332510 0%, #153427 68%, #1c4434 100%) !important;
+      border-color: #f59e0b !important;
+      box-shadow: 0 14px 36px rgba(245,158,11,0.2), 0 4px 22px rgba(0,0,0,0.55) !important;
+    }
+    [data-theme="dark"] .featured-product h3 { color: #fcd34d !important; }
+    [data-theme="dark"] .featured-product .product-art-wrap { background: #3b2d16 !important; border-color: #9a6b1d !important; }
+    @media (min-width: 861px) {
+      .featured-product { display: grid !important; grid-template-columns: minmax(220px, 0.75fr) 1.25fr; column-gap: 24px; }
+      .featured-product .product-art-wrap { grid-row: 1 / span 5; height: 100%; min-height: 250px; margin-bottom: 0; }
+      .featured-product .product-meta-row { align-self: end; }
+    }
+
     /* ===== RESPONSIVE PRODUCT GRID ===== */
     #catalogueProductGrid {
       display: grid !important;
@@ -182,7 +219,7 @@
       <!-- Filter Controls Bar -->
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;" id="catalogueFilters">
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn btn-primary btn-sm product-filter-btn active" data-filter="all">All Products (20)</button>
+          <button class="btn btn-primary btn-sm product-filter-btn active" data-filter="all">All Products (21)</button>
           <button class="btn btn-outline btn-sm product-filter-btn" data-filter="Poultry">Poultry Range</button>
           <button class="btn btn-outline btn-sm product-filter-btn" data-filter="Cattle">Cattle & Dairy</button>
           <button class="btn btn-outline btn-sm product-filter-btn" data-filter="Feed Supplement">Feed Premixes</button>
@@ -197,8 +234,29 @@
 
       <!-- Master Product Grid (Pre-rendered and dynamically filterable) -->
       <div class="grid-3" id="catalogueProductGrid">
-        
-        <!-- 1. ACIDVIC -->
+        <!-- 1. LEVOTYL-BH -->
+        <div class="card product-card featured-product" data-audience="Poultry" data-category="Medicine">
+          <div class="product-art-wrap" onclick="openProductSpecModal('levotyl-bh')">
+            <img src="products/POULTRY_CHICKEN_MEDICINES/LEVOTYL-BH.jpeg" alt="LEVOTYL-BH" loading="eager">
+          </div>
+          <div class="product-meta-row">
+            <span class="badge badge-gold">New Launch</span>
+            <span class="badge badge-emerald">Poultry</span>
+            <span class="badge badge-cyan">Respiratory Care</span>
+          </div>
+          <h3>LEVOTYL-BH</h3>
+          <p class="prod-desc">Triple-action poultry respiratory formula combining Levofloxacin, Tylosin, and Bromhexine in one convenient liquid formulation.</p>
+          <div class="prod-composition">
+            <strong>Active Composition</strong>
+            Levofloxacin 100 mg + Tylosin 10 mg + Bromhexine HCl 15 mg per ml
+          </div>
+          <div class="product-action-row">
+            <button class="btn btn-primary btn-sm" onclick="openProductSpecModal('levotyl-bh')">View Specs & Pricing</button>
+            <button class="btn btn-outline btn-sm request-details" data-product="LEVOTYL-BH">💬 Enquire Now</button>
+          </div>
+        </div>
+
+        <!-- 2. ACIDVIC -->
         <div class="card product-card" data-audience="Poultry" data-category="Medicine">
           <div class="product-art-wrap" onclick="openProductSpecModal('acidvic')">
             <img src="products/POULTRY_CHICKEN_MEDICINES/ACIDVIC.jpeg" alt="ACIDVIC" loading="lazy">
