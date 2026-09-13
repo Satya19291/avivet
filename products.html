@@ -119,6 +119,19 @@
       text-transform: uppercase;
       margin-bottom: 8px;
     }
+    .featured-product .featured-urgency {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 2px 0 10px;
+      padding: 7px 12px;
+      border-radius: 6px;
+      background: #b91c1c;
+      color: #ffffff;
+      font: 800 0.78rem/1 'Outfit', sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
     .featured-product .product-action-row .btn-primary { background: #d97706; border-color: #d97706; }
     [data-theme="dark"] .featured-product {
       background: linear-gradient(135deg, #332510 0%, #153427 68%, #1c4434 100%) !important;
@@ -127,6 +140,7 @@
     }
     [data-theme="dark"] .featured-product h3 { color: #fcd34d !important; }
     [data-theme="dark"] .featured-product .featured-promo { color: #fbbf24 !important; }
+    [data-theme="dark"] .featured-product .featured-urgency { background: #dc2626; color: #ffffff; }
     [data-theme="dark"] .featured-product .product-art-wrap { background: #3b2d16 !important; border-color: #9a6b1d !important; }
     @media (min-width: 861px) {
       .featured-product { display: grid !important; grid-template-columns: minmax(220px, 0.75fr) 1.25fr; column-gap: 24px; }
@@ -258,6 +272,7 @@
             <span class="badge badge-cyan">Respiratory Care</span>
           </div>
           <h3>LEVOTYL-BH</h3>
+          <span class="featured-urgency">Limited Introductory Stock</span>
           <p class="featured-promo">NEW POULTRY FORMULA · ASK FOR AVAILABILITY &amp; PRICING</p>
           <p class="prod-desc">Triple-action poultry respiratory formula combining Levofloxacin, Tylosin, and Bromhexine in one convenient liquid formulation.</p>
           <div class="prod-composition">
