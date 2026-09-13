@@ -108,8 +108,17 @@
       font: 800 0.68rem/1 'Outfit', sans-serif;
       letter-spacing: 0.04em;
     }
-    .featured-product .product-art-wrap { border-color: #fcd34d; background: #fffbeb; }
+    .featured-product .product-art-wrap { border-color: #fcd34d; background: #fffbeb; height: 200px; min-height: 200px; }
+    .featured-product .product-art-wrap img { max-height: 180px; width: auto; object-fit: contain; }
     .featured-product h3 { color: #9a3412; font-size: 1.55rem; }
+    .featured-product .featured-promo {
+      color: #b45309;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
     .featured-product .product-action-row .btn-primary { background: #d97706; border-color: #d97706; }
     [data-theme="dark"] .featured-product {
       background: linear-gradient(135deg, #332510 0%, #153427 68%, #1c4434 100%) !important;
@@ -117,10 +126,11 @@
       box-shadow: 0 14px 36px rgba(245,158,11,0.2), 0 4px 22px rgba(0,0,0,0.55) !important;
     }
     [data-theme="dark"] .featured-product h3 { color: #fcd34d !important; }
+    [data-theme="dark"] .featured-product .featured-promo { color: #fbbf24 !important; }
     [data-theme="dark"] .featured-product .product-art-wrap { background: #3b2d16 !important; border-color: #9a6b1d !important; }
     @media (min-width: 861px) {
       .featured-product { display: grid !important; grid-template-columns: minmax(220px, 0.75fr) 1.25fr; column-gap: 24px; }
-      .featured-product .product-art-wrap { grid-row: 1 / span 5; height: 100%; min-height: 250px; margin-bottom: 0; }
+      .featured-product .product-art-wrap { grid-row: 1 / span 5; height: 200px; min-height: 200px; margin-bottom: 0; align-self: center; }
       .featured-product .product-meta-row { align-self: end; }
     }
 
@@ -136,6 +146,8 @@
     @media (max-width: 860px) {
       #catalogueProductGrid { grid-template-columns: 1fr !important; gap: 16px !important; }
       .product-art-wrap { height: 190px; }
+      .featured-product { display: flex !important; grid-column: 1; }
+      .featured-product .product-art-wrap { height: 190px; min-height: 190px; }
       .card.product-card { padding: 16px; min-height: 0; }
       .product-action-row { flex-direction: column; gap: 8px; }
       .product-action-row .btn { width: 100% !important; }
@@ -192,6 +204,7 @@
         <a class="btn btn-emerald btn-sm" href="https://wa.me/918367455559" target="_blank" rel="noopener">
           💬 WhatsApp
         </a>
+        <a class="mobile-products-link" href="products.html">Products</a>
         <button class="menu-btn" aria-label="Toggle navigation">☰</button>
       </div>
     </nav>
@@ -245,6 +258,7 @@
             <span class="badge badge-cyan">Respiratory Care</span>
           </div>
           <h3>LEVOTYL-BH</h3>
+          <p class="featured-promo">NEW POULTRY FORMULA · ASK FOR AVAILABILITY &amp; PRICING</p>
           <p class="prod-desc">Triple-action poultry respiratory formula combining Levofloxacin, Tylosin, and Bromhexine in one convenient liquid formulation.</p>
           <div class="prod-composition">
             <strong>Active Composition</strong>

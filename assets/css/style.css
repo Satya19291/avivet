@@ -381,6 +381,10 @@ button, input, select, textarea {
   padding: 4px;
 }
 
+.mobile-products-link {
+  display: none;
+}
+
 /* ==========================================================================
    Buttons, Badges & UI Elements
    ========================================================================== */
@@ -1509,6 +1513,25 @@ section {
     line-height: 42px;
     text-align: center;
     border-radius: var(--radius-sm);
+  }
+
+  .mobile-products-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 12px;
+    border-radius: var(--radius-pill);
+    background: var(--emerald);
+    color: var(--primary-dark);
+    font-size: 0.82rem;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px var(--emerald-glow);
+  }
+
+  .nav-tools > .btn.btn-emerald {
+    display: none;
   }
 
   /* Section Spacing & Layouts */
