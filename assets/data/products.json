@@ -15,6 +15,21 @@
     "featured": true
   },
   {
+    "id": "levozith-bh",
+    "name": "LEVOZITH-BH",
+    "audience": "Poultry",
+    "category": "Medicine",
+    "tagline": "Dual-Antibiotic Respiratory Formula",
+    "description": "Advanced poultry respiratory support combining Levofloxacin and Azithromycin with Bromhexine for stronger mucus clearance and bacterial control.",
+    "composition": "Each gram contains: Levofloxacin Hemihydrate I.P. equivalent to Levofloxacin 100 mg, Azithromycin I.P. (as dihydrate) equivalent to Azithromycin anhydrous 100 mg, Bromhexine Hydrochloride I.P. 15 mg, Excipients q.s.",
+    "indications": ["Poultry Respiratory Care", "CRD & Secondary Infections", "Mucus & Air Sac Support"],
+    "benefits": "Delivers dual broad-spectrum antibiotic action plus mucolytic support in one high-efficacy respiratory formulation.",
+    "dosage": "Use only as directed on the product label or by a qualified veterinarian.",
+    "pack": "Refer to the product label for available pack sizes.",
+    "image": "products/POULTRY_CHICKEN_MEDICINES/LEVOZITH-BH.jpeg",
+    "featured": true
+  },
+  {
     "id": "acidvic",
     "name": "ACIDVIC",
     "audience": "Poultry",
